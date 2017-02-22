@@ -108,3 +108,61 @@
 			- data optimized for Redshift and saved in local files
 			- files loaded to an Amazon S3 bucket and then to Redshift
 
+-------------------------------------------------------------------------------
+
+
+2017, February 22
+**AWS NoSQL**
+
+		* relational (SQL) vs nonrelational (NoSQL)
+			- relational
+				- master & slaves (primary, secondary)
+				- scale up, but you reach a max
+				- optimized for storage
+				- ad hoc queries; scale vertically; good for OLAP
+			- nonrelational: 
+				- cluster that is sharded
+				- no upper limit
+				- don't need to do joins
+				- schema is designed per item, rather than as multiple tables
+				- optimized for computer
+				- instantiated views; scale horizontally; built for OLTP at scale
+		* NoSQL solutions on AWS
+			- bring your own NoSQL (or) use Amazon DynamoDB
+			- avoid overhead of provisioning hardware
+
+		* DynamoDB
+			- fully managed, highly scalable, flexible, event-driven programming
+			-  consistently low latency at scale
+			- how to get started:
+					- create table name (set permanently) & partition key (tells where data is stored) on AWS
+						- provisioned capacity set at 5 reads, 5 writes
+					- load data items into table
+						- table is distributed among 3 availability zones
+					- table structure:
+						- each item is a row
+						- each item has 1+ attributes (attribute has names & values)
+						- mandatroy partition key is a key-value access pattern that determines data distribution
+						- optional sort key enables rich query capabilities
+							- all items for key ==, <, >, >=, <=, "begins with", "contains", "in", "between" etc sorted results counts top/bottom N values
+						- global secondary index (GSI)
+							- alternate partition (+sort) key 
+							- index is across all table partition keys
+							- provision the through separately; essentially like creating another db
+						- local secondary index (LSI)
+							- alternate sort key attribute
+							- index is local to a partition key
+					- integration capabilities
+						- DynamoDB Streams
+							- stream of table updates
+							- async
+							- exactly once
+							- strictly ordered
+							- 24hr lifetime per item
+						- DynamoDB Triggers
+							- implemented as AWS Lambda functions
+							- code scales automatically
+							- Java, Node.js, Python
+					- 
+
+
