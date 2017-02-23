@@ -163,6 +163,69 @@
 							- implemented as AWS Lambda functions
 							- code scales automatically
 							- Java, Node.js, Python
-					- 
+
+	(https://s3-us-west-1.amazonaws.com/architectureweeks/Database/SF+Februray+21-23%2C+2017/Database+S3.pdf)
+
+-------------------------------------------------------------------------------
 
 
+2017, February 23
+**AMAZON REDSHIFT**
+
+		* once data is stored, Redshift can be used to analyze (analyst team)
+		* good at join and complex queries 
+		* relational data warehouse
+		* massively parallel; petabyte scale
+		* fully managed
+		* HDD and SSD platforms
+		* $1k/TB/year; starts at $0.25/hr
+		* use cases
+			- traditional data warehousing
+				- easy migration
+				- secure and compliant
+					- end to end encryption
+				- large ecosystem
+					- variety of cloud and on-premises BI and ETL tools
+			- log analysis
+				- cheap
+				- fast
+					- massively parallel processing (MPP) and columnararchitecture for fast queries and parallel loads
+				- near real-time
+			- business application
+				- fully managed
+					- provisioning, backups, upgrades, scurity, compresssionall come built-in
+				- ease of chargeback
+					- pay as you go, add clusters as needed
+				- service oriented architecture
+		* architecture
+			- leader node
+				- simple SQL endpoint
+				- stores metadata
+				- optimizes query plan
+				- coordinated query exexution
+			- compute nodes
+				- local columnar storage
+				- parallel distributed execution of all queries, loads, backups restores, resizes
+		* benefits
+			- fast
+				- dramatically less I/O
+					- column storage; data compression; zone maps;direct-attached storage; large data block sizes
+				- parallel and distributed
+				- hardware optimized for I/O intensive workloads, 4GB/sec/node
+				- enhanced networking, over 1 million packets/sec/node
+			- coming soon
+				- power starts
+					- all queries receive a power start. shorter queries benefit the most
+				- query monitoring rules
+					- allows automatic handling of runaway queries; metrics with operators and values create a predicate; multople predicates can be AND-ed together to create a rule; multiple rules can be defined for a queie in WLM these rules are OR-ed together
+			- pricing
+			- fully managed
+				- continuous/incremental backups
+					- multiple copies within cluster; backups to S3; backups across regions; streaming restore
+			- security
+				- load encrypted from S3l SSL to secure data in transit; Amazon VPC for network isolation; encryption to secure data at rest; audit logging and AWS CloudTrail integration; SOC 1/2/3, PCI-DSS, FedRAMP, BAA
+			- powerful
+				- approximate functions; user defined functions; machine learning; data science
+			- large ecosystem
+			- service oriented architecture
+		
